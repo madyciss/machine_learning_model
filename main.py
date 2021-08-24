@@ -1,39 +1,91 @@
-import streamlit as st
-import pandas as pd
-from sklearn import datasets
-from sklearn.ensemble import RandomForestClassifier
+"""nom = "Mady"
+print("Je m'appelle " + nom)
+print("Mon nom c'est bien " + nom + " CISSE")
 
-st.write('''
-# Bienvenue dans votre application Machine learning 
-Cette application prédit la catégorie des fleurs d'iris
-''')
+prenom = input("Quel est ton prenom? ")
+print("Je m'appelle " + prenom)
+print("Mon nom c'est bien " + prenom + " CISSE")"""
 
-st.sidebar.header("Les parametres d'entrées")
+"""ton_nom = input ("Quel est vous nom? ")
+ton_age = input("Quel est vous age? ")
+print("vous vous appellez " + ton_nom + ", vous avez " + ton_age + "ans")"""
 
-def uses_input():
-    sepal_lenght=st.sidebar.slider('La longueur du sepal', 4.3, 7.9, 5.3)
-    sepal_widht=st.sidebar.slider('La largeur du sepal', 2.0, 4.4, 3.3)
-    petal_lenght=st.sidebar.slider('La longueur du petal', 1.0, 6.9, 2.3)
-    petal_widht=st.sidebar.slider('La largeur du petal', 0.1, 2.5, 1.3)
-    data={'sepal_lenght': sepal_lenght,
-          'sepal_widht': sepal_widht,
-          'petal_lenght': petal_lenght,
-          'petal_widht': petal_widht,
-    }
-    fleur_parametre=pd.DataFrame(data, index=[0])
-    return fleur_parametre
+""" # Convertir un entier en une chaine de caractére
+# ton_nom = input ("Quel est vous nom? ")
+# ton_age = input("Quel est vous age? ")
+age = 25
+annee_prochaine = age + 1
+print("vous avez " + str(age) + "ans.")
+print("Année prochaine, vous aurez " + str(annee_prochaine) + "ans.")"""
 
-st.date_input('calandrier')
+"""
+# Convertir une chaine de caractére en entier
+# ton_nom = input ("Quel est vous nom? ")
+age = input("Quel est vous age? ")
+# age = 25
+try:
+    annee_prochaine = int(age) + 1
+except:
+    print("ERREUR: vous devez entrer un nomber")
+else:
+    print("vous avez " + str(age) + "ans.")
+    print("Année prochaine, vous aurez " + str(annee_prochaine) + " ans.")
+"""
 
-df=uses_input()
+# La boucle while: "tant que"
+"""
+n = 0
+while(n < 10):
+    print("La valeur de n:" + str(n))
+    n = n + 1
+"""
 
-st.subheader('On veut trouver la categorie de cette fleur')
-st.write(df)
+"""mot_de_pass = ""
+while not mot_de_pass == "password":
+    mot_de_pass = input("Entrer votre mot de passe: ")
+print("Votre de passe est correte, vous avez accée à votre compte")"""
 
-iris=datasets.load_iris()
-model=RandomForestClassifier()
-model.fit(iris.data, iris.target)
-prediction=model.predict(df)
+"""votre_nom = ""
+while votre_nom == "":
+    votre_nom = input("Quel est votre nom? ")
+print("Votre nom est " + votre_nom)"""
 
-st.subheader("La categorie de la fleur d'iris est: ")
-st.write(iris.target_names[prediction])
+
+def demander_nom():
+    nom = ""
+    while nom == "":
+        nom = input("Quel est votre nom? ")
+    return nom
+
+
+def demander_age(nom_personne):
+    age_int = 0
+    while age_int == 0:
+        age_str = input("nom_personne " + "quel est votre age? ")
+        age_int = int(age_str)
+    return age_int
+
+
+def affichage(nom, age):
+    print()
+    print("vous vous appellez " + nom + ", vous avez " + str(age) + " ans")
+    print("Année prochaine, vous aurez " + str(age + 1) + " ans.")
+    if age == 17:
+        print("Vous etes mineur")
+    elif 1 < age < 3:
+        print("Vous etes un bebe")
+    else:
+        print("Vous ete majeur")
+
+
+nom1 = demander_nom()
+nom2 = demander_nom()
+
+age1 = demander_age(nom1)
+age2 = demander_age(nom2)
+
+affichage(nom1, age1)
+affichage(nom2, age2)
+
+
+
